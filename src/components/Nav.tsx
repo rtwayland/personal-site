@@ -51,7 +51,7 @@ const NavItem = styled(NavLink)({
   borderBottom: '1px solid transparent',
   padding: '4px 8px',
   margin: '0 4px',
-  '&:active, &:visited': {
+  '&, &:active, &:visited': {
     color: '#222',
   },
   '&.active': {
