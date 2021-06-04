@@ -58,7 +58,7 @@ const NavItem = styled(NavLink)({
     color: '#222',
   },
   '&.active': {
-    borderBottom: '1px solid #222',
+    borderBottom: '1px solid #777',
   },
 });
 
