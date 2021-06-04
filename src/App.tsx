@@ -7,7 +7,7 @@ import Home from './components/Home';
 import DevPortfolio from './components/DevPortfolio';
 import About from './components/About';
 import ComingSoon from './components/ComingSoon';
-// import PhotoApp from './components/projects/PhotoApp';
+import PhotoApp from './components/projects/PhotoApp';
 
 const App = () => {
   return (
@@ -18,7 +18,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/portfolio" component={DevPortfolio} />
-          <Route path="/portfolio/photo-app" component={ComingSoon} />
+          <Route path="/portfolio/photo-app" component={PhotoApp} />
           <Route path="/portfolio/synth" component={ComingSoon} />
           <Route path="/portfolio/ui-library" component={ComingSoon} />
           <Route path="/about" component={About} />
