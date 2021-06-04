@@ -36,7 +36,8 @@ const DevPortfolio = () => {
           <Project key={title}>
             <Header>
               <h2>
-                <Link to={relLink}>{title}</Link>
+                {/* <Link to={relLink}>{title}</Link> */}
+                {title}
               </h2>
               <HeaderLinks>
                 {github && (
