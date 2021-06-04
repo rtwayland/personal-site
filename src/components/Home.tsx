@@ -37,7 +37,7 @@ const Home = () => {
         </p>
         <p>
           Outside of engineering, I love spending time with family, watercolor
-          painting, board games, fountain pens, custom mechanical keyboards, and
+          painting, board games, custom mechanical keyboards, and
           writing.
         </p>
         <p>Thanks for visiting! Feel free to reach out on LinkedIn!</p>
