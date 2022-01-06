@@ -23,7 +23,7 @@ const DevPortfolio = () => {
     {
       title: 'UI Library',
       relLink: '/portfolio/ui-library',
-      siteLink: 'https://ui.stormapp.com/',
+      siteLink: 'https://ui.wavv.com/',
       github: '',
       description: 'A UI library built from scratch in React.',
     },
