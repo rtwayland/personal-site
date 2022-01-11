@@ -23,6 +23,13 @@ const PhotoApp = () => {
             to map real photographs to the various sizes of watercolor paper I
             was using to paint the image.
           </p>
+          <p>
+            The photo used in these demo images is by{' '}
+            <a href="https://unsplash.com/@mathildelangevin?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+              Mathilde Langevin
+            </a>
+            , sourced from <a href="https://unsplash.com/">Unsplash</a>.
+          </p>
           <Image src={app} alt="App interface with imported file" />
         </Section>
         <Section>
