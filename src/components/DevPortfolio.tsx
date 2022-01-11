@@ -1,12 +1,32 @@
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
-import { FaExternalLinkSquareAlt, FaGithub } from 'react-icons/fa';
+import { FaExternalLinkSquareAlt, FaGithub, FaYoutube } from 'react-icons/fa';
 import Container from './Container';
+
+const LANGS = {
+  js: 'JavaScript',
+  ts: 'TypeScript',
+  react: 'ReactJS',
+  angular: 'AngularJS',
+  node: 'Node.js',
+  mongo: 'MongoDB',
+};
 
 const DevPortfolio = () => {
   const projects = [
     {
+      title: 'UI Library',
+      year: 'Current',
+      languages: [LANGS.react, LANGS.ts, LANGS.js],
+      // relLink: '/portfolio/ui-library',
+      siteLink: 'https://ui.wavv.com/',
+      github: '',
+      description: 'A UI library built from scratch in React.',
+    },
+    {
       title: 'Photo Reference App',
+      year: '2021',
+      languages: [LANGS.react, LANGS.js],
       relLink: '/portfolio/photo-app',
       siteLink: 'https://photo.raleighwayland.com',
       github: 'https://github.com/rtwayland/photo-reference',
@@ -15,44 +35,94 @@ const DevPortfolio = () => {
     },
     {
       title: 'Browser Synth',
-      relLink: '/portfolio/synth',
+      year: '2020',
+      languages: [LANGS.react, LANGS.js],
+      // relLink: '/portfolio/synth',
       siteLink: 'https://synth.raleighwayland.com',
       github: 'https://github.com/rtwayland/browser-synth',
       description: 'A music synthesizer in the browser.',
     },
     {
-      title: 'UI Library',
-      relLink: '/portfolio/ui-library',
-      siteLink: 'https://ui.wavv.com/',
-      github: '',
-      description: 'A UI library built from scratch in React.',
+      title: 'Movie Guru',
+      year: '2017',
+      languages: [`${LANGS.angular} 4`, LANGS.js, LANGS.node],
+      // relLink: '/portfolio/movie-guru',
+      siteLink: '',
+      github: 'https://github.com/rtwayland/movie-guru',
+      youtube: 'https://youtu.be/zZH0NZSSJjI',
+      description:
+        'A web app to generate movie suggestions and where you can find those movies on the internet.',
+    },
+    {
+      title: 'Fox Briar Properties',
+      year: '2017',
+      languages: [`${LANGS.angular} 1.6`, LANGS.js, LANGS.node, LANGS.mongo],
+      // relLink: '/portfolio/fox-briar',
+      siteLink: '',
+      github: 'https://github.com/rtwayland/apt-management-site',
+      youtube: 'https://youtu.be/SuIbv7sq7So',
+      description: 'A website to manage properties and tenants.',
+    },
+    {
+      title: 'Dezvu Events',
+      year: '2017',
+      languages: [`${LANGS.angular} 1.6`, LANGS.js],
+      // relLink: '/portfolio/dezvu',
+      youtube: 'https://youtu.be/p_t6TVLRVSg',
+      description: 'An event management website.',
     },
   ];
   return (
     <Container>
       <Projects>
         <h1>Projects</h1>
-        {projects.map(({ title, relLink, siteLink, github, description }) => (
-          <Project key={title}>
-            <Header>
-              <h2>
-                {/* <Link to={relLink}>{title}</Link> */}
-                {title}
-              </h2>
-              <HeaderLinks>
-                {github && (
-                  <a href={github} target="_blank" rel="noreferrer">
-                    <FaGithub size={24} style={{ marginRight: 8 }} />
-                  </a>
-                )}
-                <a href={siteLink} target="_blank" rel="noreferrer">
-                  <FaExternalLinkSquareAlt size={24} />
-                </a>
-              </HeaderLinks>
-            </Header>
-            <p>{description}</p>
-          </Project>
-        ))}
+        {projects.map((project) => {
+          const {
+            title,
+            year,
+            languages,
+            relLink,
+            siteLink,
+            github,
+            youtube,
+            description,
+          } = project;
+          return (
+            <Project key={title}>
+              <Header>
+                <TitleContainer>
+                  <Title>
+                    {relLink ? <Link to={relLink}>{title}</Link> : title}
+                  </Title>
+                  <Meta>
+                    <SubText>{year}</SubText>
+                    {year && languages && <SubText>•</SubText>}
+                    {languages && <SubText>{languages.join(', ')}</SubText>}
+                  </Meta>
+                </TitleContainer>
+
+                <HeaderLinks>
+                  {github && (
+                    <a href={github} target="_blank" rel="noreferrer">
+                      <FaGithub size={24} color="#333" />
+                    </a>
+                  )}
+                  {youtube && (
+                    <a href={youtube} target="_blank" rel="noreferrer">
+                      <FaYoutube size={24} color="#F00" />
+                    </a>
+                  )}
+                  {siteLink && (
+                    <a href={siteLink} target="_blank" rel="noreferrer">
+                      <FaExternalLinkSquareAlt size={24} />
+                    </a>
+                  )}
+                </HeaderLinks>
+              </Header>
+              <p>{description}</p>
+            </Project>
+          );
+        })}
       </Projects>
     </Container>
   );
@@ -78,6 +148,26 @@ const Header = styled.div({
 const HeaderLinks = styled.div({
   display: 'flex',
   alignItems: 'center',
+  columnGap: 8,
+});
+
+const TitleContainer = styled.div({
+  display: 'flex',
+  flexDirection: 'column',
+});
+
+const Meta = styled.div({
+  display: 'flex',
+  alignItems: 'center',
+  columnGap: 4,
+});
+
+const Title = styled.h2({
+  margin: 0,
+});
+
+const SubText = styled.div({
+  fontSize: 14,
 });
 
 export default DevPortfolio;
