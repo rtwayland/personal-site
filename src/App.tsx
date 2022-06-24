@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { Route, Switch } from 'react-router-dom';
+import ReactGA from 'react-ga4';
 import GlobalStyles from './GlobalStyles';
 import Nav from './components/Nav';
 import Home from './components/Home';
@@ -8,6 +9,9 @@ import DevPortfolio from './components/DevPortfolio';
 import About from './components/About';
 import ComingSoon from './components/ComingSoon';
 import PhotoApp from './components/projects/PhotoApp';
+
+ReactGA.initialize('G-MSKL2ZNZ5J');
+ReactGA.send('pageview');
 
 const App = () => {
   return (
