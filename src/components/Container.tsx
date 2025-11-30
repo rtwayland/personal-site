@@ -1,21 +1,13 @@
-import styled from '@emotion/styled';
+import type { ReactNode } from 'react';
 
-const Container = styled.div({
-  margin: '0 auto',
-  padding: '0 24px',
-  boxSizing: 'border-box',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  '@media (min-width: 1000px)': {
-    width: '80%',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-  },
-  '@media (min-width: 1400px)': {
-    width: '70%',
-  },
-});
+const Container = ({ children, className = '' }: { children: ReactNode; className?: string }) => {
+	return (
+		<div
+			className={`mx-auto px-6 box-border flex flex-col items-center lg:w-4/5 lg:flex-row lg:justify-around lg:items-center xl:w-[70%] ${className}`}
+		>
+			{children}
+		</div>
+	);
+};
 
 export default Container;

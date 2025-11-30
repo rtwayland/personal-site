@@ -1,0 +1,13 @@
+pre-commit:
+  commands:
+    biome-check:
+      exclude:
+        - build/**
+        - dist/**
+      run: pnpm biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
+      stage_fixed: true
+pre-push:
+  commands:
+    tsc:
+      glob: "*.{ts,tsx}"
+      run: pnpm lint:ts

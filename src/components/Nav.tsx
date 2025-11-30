@@ -1,65 +1,47 @@
-import styled from '@emotion/styled';
-import { NavLink, withRouter, RouteComponentProps } from 'react-router-dom';
+import { Link, useRouterState } from '@tanstack/react-router';
 
-const Nav = ({ location }: RouteComponentProps) => {
-  return (
-    <NavBar>
-      <Logo>
-        <NavLink to="/">Raleigh Wayland</NavLink>
-      </Logo>
-      <Right>
-        <NavItem to="/portfolio" activeClassName="active">
-          Portfolio
-        </NavItem>
-        {/* <NavItem to="/about" activeClassName="active">
+const Nav = () => {
+	const router = useRouterState();
+	const currentPath = router.location.pathname;
+	const isPortfolioActive = currentPath === '/portfolio' || currentPath.startsWith('/portfolio/');
+
+	return (
+		<header className="flex items-center justify-between p-2 px-4 w-full h-[55px] bg-[#fafafa] shadow-[0px_2px_4px_2px_rgba(0,0,0,0.05)] box-border z-10">
+			<div className="text-2xl cursor-pointer">
+				{/* @ts-ignore - routeTree types will be available after plugin generates routeTree.gen.ts */}
+				<Link to="/" className="no-underline text-[#222]">
+					Raleigh Wayland
+				</Link>
+			</div>
+			<div>
+				{/* @ts-ignore - routeTree types will be available after plugin generates routeTree.gen.ts */}
+				<Link
+					to="/portfolio"
+					className={`no-underline border-b border-transparent py-1 px-2 mx-1 text-[#222] ${
+						isPortfolioActive ? 'border-b border-[#777]' : ''
+					}`}
+				>
+					Portfolio
+				</Link>
+				{/* <Link
+          to="/about"
+          className={`no-underline border-b border-transparent py-1 px-2 mx-1 text-[#222] ${
+            currentPath === '/about' ? 'border-b border-[#777]' : ''
+          }`}
+        >
           About
-        </NavItem>
-        <NavItem to="/contact" activeClassName="active">
+        </Link>
+        <Link
+          to="/contact"
+          className={`no-underline border-b border-transparent py-1 px-2 mx-1 text-[#222] ${
+            currentPath === '/contact' ? 'border-b border-[#777]' : ''
+          }`}
+        >
           Contact
-        </NavItem> */}
-      </Right>
-    </NavBar>
-  );
+        </Link> */}
+			</div>
+		</header>
+	);
 };
 
-const NavBar = styled.header({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  // position: 'fixed',
-  // top: 0,
-  // left: 0,
-  padding: '8px 16px',
-  width: '100%',
-  height: 55,
-  backgroundColor: '#fafafa',
-  boxShadow: '0px 2px 4px 2px rgba(0, 0, 0, 0.05)',
-  boxSizing: 'border-box',
-  zIndex: 1,
-});
-
-const Logo = styled.div({
-  fontSize: 24,
-  cursor: 'pointer',
-  '& > a': {
-    textDecoration: 'none',
-    color: '#222',
-  },
-});
-
-const Right = styled.div({});
-
-const NavItem = styled(NavLink)({
-  textDecoration: 'none',
-  borderBottom: '1px solid transparent',
-  padding: '4px 8px',
-  margin: '0 4px',
-  '&, &:active, &:visited': {
-    color: '#222',
-  },
-  '&.active': {
-    borderBottom: '1px solid #777',
-  },
-});
-
-export default withRouter(Nav);
+export default Nav;
