@@ -22,4 +22,7 @@ export default defineConfig({
 			description: "Raleigh Wayland's Personal Website",
 		},
 	},
+	output: {
+		distPath: 'build',
+	},
 });
