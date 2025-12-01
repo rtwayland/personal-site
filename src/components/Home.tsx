@@ -1,39 +1,29 @@
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
-import profileImage from '../assets/profile-img.jpg';
+import profileJpg from '../assets/self-portrait.jpg';
+import profileWebp from '../assets/self-portrait.webp';
 import Container from './Container';
+import Image from './Image';
 
 const Home = () => {
 	return (
 		<Container>
 			<div className="flex flex-col items-center">
-				<img src={profileImage} alt="Profile" className="rounded-full overflow-hidden w-[300px] mb-4" />
-				<div>
-					<a
-						href="https://www.linkedin.com/in/raleighwayland/"
-						target="_blank"
-						rel="noreferrer"
-						className="flex items-center my-2"
-					>
-						<FaLinkedin size={24} style={{ marginRight: 8 }} color="#0077B5" />
-						LinkedIn
-					</a>
-					<a href="https://github.com/rtwayland" target="_blank" rel="noreferrer" className="flex items-center my-2">
-						<FaGithub size={24} style={{ marginRight: 8 }} color="#333" />
-						Github
-					</a>
-				</div>
+				<Image
+					srcJpg={profileJpg}
+					srcWebp={profileWebp}
+					alt="Raleigh Wayland self portrait"
+					className="rounded-full overflow-hidden w-[300px] mb-4"
+				/>
 			</div>
 			<div className="max-w-[600px] pl-6">
-				<h1>Hi, I'm Raleigh!</h1>
+				<h1 className="text-2xl font-bold">Hey there! I'm Raleigh.</h1>
 				<p>
-					I love finding new ways to express creativity and solve problems. By day, I'm lucky enough to work as a
-					Software Engineer, creating web applications and crafting user interfaces.
+					I'm a writer based in Denver, Colorado, focused on literary short fiction that explores the imperfect, the
+					strange, and the hidden, hoping to uncover some of the comedy behind what's typically unsaid.
 				</p>
 				<p>
-					Outside of engineering, I love spending time with family, watercolor painting, board games, custom mechanical
-					keyboards, and writing.
+					Outside of writing, I'm gushing over film, traveling when possible, and enjoying life with my wife and two
+					kids.
 				</p>
-				<p>Thanks for visiting! Feel free to reach out on LinkedIn!</p>
 			</div>
 		</Container>
 	);
