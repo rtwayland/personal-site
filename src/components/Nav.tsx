@@ -7,13 +7,11 @@ const Nav = () => {
 	return (
 		<header className="flex items-center justify-between p-2 px-4 w-full h-[55px] shadow-[0px_2px_4px_2px_rgba(0,0,0,0.05)] box-border z-10">
 			<div className="text-2xl cursor-pointer">
-				{/* @ts-ignore - routeTree types will be available after plugin generates routeTree.gen.ts */}
 				<Link to="/" className="no-underline">
 					Raleigh Wayland
 				</Link>
 			</div>
 			<div>
-				{/* @ts-ignore - routeTree types will be available after plugin generates routeTree.gen.ts */}
 				<Link
 					to="/portfolio"
 					className={`no-underline py-1 px-2 mx-1 ${isPortfolioActive ? 'border-b border-[#DFDFDF]' : ''}`}
