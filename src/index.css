@@ -1,10 +1,26 @@
 @import "tailwindcss";
 
+@font-face {
+	font-family: "Cooper";
+	src: url("./assets/fonts/Cooper[wght].woff2") format("woff2");
+	font-weight: 200 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Cooper";
+	src: url("./assets/fonts/Cooper-Italic[wght].woff2") format("woff2");
+	font-weight: 200 900;
+	font-style: italic;
+	font-display: swap;
+}
+
 body {
 	margin: 0;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	font-family: "Crimson Pro", serif;
+	font-family: "Cooper", serif;
 	background-color: #1f1f1f;
 	color: #dfdfdf;
 }
