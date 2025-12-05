@@ -9,16 +9,19 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as PortfolioRouteImport } from './routes/portfolio'
+import { Route as NowRouteImport } from './routes/now'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as PortfolioUiLibraryRouteImport } from './routes/portfolio.ui-library'
-import { Route as PortfolioSynthRouteImport } from './routes/portfolio.synth'
-import { Route as PortfolioPhotoAppRouteImport } from './routes/portfolio.photo-app'
 
-const PortfolioRoute = PortfolioRouteImport.update({
-  id: '/portfolio',
-  path: '/portfolio',
+const NowRoute = NowRouteImport.update({
+  id: '/now',
+  path: '/now',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -31,87 +34,55 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PortfolioUiLibraryRoute = PortfolioUiLibraryRouteImport.update({
-  id: '/ui-library',
-  path: '/ui-library',
-  getParentRoute: () => PortfolioRoute,
-} as any)
-const PortfolioSynthRoute = PortfolioSynthRouteImport.update({
-  id: '/synth',
-  path: '/synth',
-  getParentRoute: () => PortfolioRoute,
-} as any)
-const PortfolioPhotoAppRoute = PortfolioPhotoAppRouteImport.update({
-  id: '/photo-app',
-  path: '/photo-app',
-  getParentRoute: () => PortfolioRoute,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/portfolio': typeof PortfolioRouteWithChildren
-  '/portfolio/photo-app': typeof PortfolioPhotoAppRoute
-  '/portfolio/synth': typeof PortfolioSynthRoute
-  '/portfolio/ui-library': typeof PortfolioUiLibraryRoute
+  '/contact': typeof ContactRoute
+  '/now': typeof NowRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/portfolio': typeof PortfolioRouteWithChildren
-  '/portfolio/photo-app': typeof PortfolioPhotoAppRoute
-  '/portfolio/synth': typeof PortfolioSynthRoute
-  '/portfolio/ui-library': typeof PortfolioUiLibraryRoute
+  '/contact': typeof ContactRoute
+  '/now': typeof NowRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/portfolio': typeof PortfolioRouteWithChildren
-  '/portfolio/photo-app': typeof PortfolioPhotoAppRoute
-  '/portfolio/synth': typeof PortfolioSynthRoute
-  '/portfolio/ui-library': typeof PortfolioUiLibraryRoute
+  '/contact': typeof ContactRoute
+  '/now': typeof NowRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/about'
-    | '/portfolio'
-    | '/portfolio/photo-app'
-    | '/portfolio/synth'
-    | '/portfolio/ui-library'
+  fullPaths: '/' | '/about' | '/contact' | '/now'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/about'
-    | '/portfolio'
-    | '/portfolio/photo-app'
-    | '/portfolio/synth'
-    | '/portfolio/ui-library'
-  id:
-    | '__root__'
-    | '/'
-    | '/about'
-    | '/portfolio'
-    | '/portfolio/photo-app'
-    | '/portfolio/synth'
-    | '/portfolio/ui-library'
+  to: '/' | '/about' | '/contact' | '/now'
+  id: '__root__' | '/' | '/about' | '/contact' | '/now'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  PortfolioRoute: typeof PortfolioRouteWithChildren
+  ContactRoute: typeof ContactRoute
+  NowRoute: typeof NowRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/portfolio': {
-      id: '/portfolio'
-      path: '/portfolio'
-      fullPath: '/portfolio'
-      preLoaderRoute: typeof PortfolioRouteImport
+    '/now': {
+      id: '/now'
+      path: '/now'
+      fullPath: '/now'
+      preLoaderRoute: typeof NowRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -128,50 +99,14 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/portfolio/ui-library': {
-      id: '/portfolio/ui-library'
-      path: '/ui-library'
-      fullPath: '/portfolio/ui-library'
-      preLoaderRoute: typeof PortfolioUiLibraryRouteImport
-      parentRoute: typeof PortfolioRoute
-    }
-    '/portfolio/synth': {
-      id: '/portfolio/synth'
-      path: '/synth'
-      fullPath: '/portfolio/synth'
-      preLoaderRoute: typeof PortfolioSynthRouteImport
-      parentRoute: typeof PortfolioRoute
-    }
-    '/portfolio/photo-app': {
-      id: '/portfolio/photo-app'
-      path: '/photo-app'
-      fullPath: '/portfolio/photo-app'
-      preLoaderRoute: typeof PortfolioPhotoAppRouteImport
-      parentRoute: typeof PortfolioRoute
-    }
   }
 }
-
-interface PortfolioRouteChildren {
-  PortfolioPhotoAppRoute: typeof PortfolioPhotoAppRoute
-  PortfolioSynthRoute: typeof PortfolioSynthRoute
-  PortfolioUiLibraryRoute: typeof PortfolioUiLibraryRoute
-}
-
-const PortfolioRouteChildren: PortfolioRouteChildren = {
-  PortfolioPhotoAppRoute: PortfolioPhotoAppRoute,
-  PortfolioSynthRoute: PortfolioSynthRoute,
-  PortfolioUiLibraryRoute: PortfolioUiLibraryRoute,
-}
-
-const PortfolioRouteWithChildren = PortfolioRoute._addFileChildren(
-  PortfolioRouteChildren,
-)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  PortfolioRoute: PortfolioRouteWithChildren,
+  ContactRoute: ContactRoute,
+  NowRoute: NowRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

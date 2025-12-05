@@ -25,6 +25,11 @@ body {
 	color: #feffdb;
 }
 
+a {
+	color: #5b97ff;
+	text-decoration: underline;
+}
+
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
