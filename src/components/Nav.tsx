@@ -1,23 +1,20 @@
-import { Link, useLocation } from '@tanstack/react-router';
+import { Link } from '@tanstack/react-router';
 
 const Nav = () => {
-	const { pathname } = useLocation();
-	const isPortfolioActive = pathname === '/portfolio' || pathname.startsWith('/portfolio/');
+	// const { pathname } = useLocation();
+	// const isAboutActive = pathname === '/about';
 
 	return (
 		<header className="flex items-center justify-between p-2 px-4 w-full h-[55px] shadow-[0px_2px_4px_2px_rgba(0,0,0,0.05)] box-border z-10">
-			<div className="text-2xl cursor-pointer">
+			<div className="text-2xl font-black cursor-pointer">
 				<Link to="/" className="no-underline">
 					Raleigh Wayland
 				</Link>
 			</div>
 			<div>
-				<Link
-					to="/portfolio"
-					className={`no-underline py-1 px-2 mx-1 ${isPortfolioActive ? 'border-b border-[#DFDFDF]' : ''}`}
-				>
-					Portfolio
-				</Link>
+				{/* <Link to="/about" className={`no-underline py-1 px-2 mx-1 ${isAboutActive ? 'border-b border-[#DFDFDF]' : ''}`}>
+					About
+				</Link> */}
 				{/* <Link
           to="/about"
           className={`no-underline border-b border-transparent py-1 px-2 mx-1 text-[#222] ${
